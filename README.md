@@ -10,8 +10,8 @@
  ## Description
  This is a project that allows the user to track expenses using a add-subtract simple format which is then displayed on a graph. This application works both online and offline, and when transaction are posted offline they are stored for when the application is again connected to a network. Past transactions are also visible when using the application off network. 
 
- After downloading the starter code, I was able to create the manifest.json, idb.js, and the service-worker.js files to begin this activity. 
- ![Uploading Screen Shot 2022-06-19 at 9.33.40 AM.png…]()
+ After downloading the starter code, I was able to create the manifest.json, idb.js, and the service-worker.js files to successfully complete this activity. 
+<img width="850" alt="Screen Shot 2022-06-19 at 9 33 40 AM" src="https://user-images.githubusercontent.com/96094719/174486486-49c4be66-dd2f-4c3e-bf4a-8b488dec166f.png">
 
 
  ## Installation
