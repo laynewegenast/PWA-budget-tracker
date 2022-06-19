@@ -18,7 +18,6 @@ const FILES_TO_CACHE = [
     '/icons/icon-512x512.png' 
 ]
 
-// Install the service worker
 self.addEventListener('install', function(evt) {
     evt.waitUntil(
       caches.open(CACHE_NAME).then(cache => {
@@ -30,7 +29,6 @@ self.addEventListener('install', function(evt) {
     self.skipWaiting();
   });
   
-  // Activate the service worker and remove old data from the cache
   self.addEventListener('activate', function(evt) {
     evt.waitUntil(
       caches.keys().then(keyList => {
@@ -48,7 +46,6 @@ self.addEventListener('install', function(evt) {
     self.clients.claim();
   });
   
-  // Intercept fetch requests
   self.addEventListener('fetch', function(evt) {
     if (evt.request.url.includes('/api/')) {
       evt.respondWith(
@@ -57,7 +54,6 @@ self.addEventListener('install', function(evt) {
           .then(cache => {
             return fetch(evt.request)
               .then(response => {
-                // If the response was good, clone it and store it in the cache.
                 if (response.status === 200) {
                   cache.put(evt.request.url, response.clone());
                 }
@@ -65,7 +61,6 @@ self.addEventListener('install', function(evt) {
                 return response;
               })
               .catch(err => {
-                // Network request failed, try to get it from the cache.
                 return cache.match(evt.request);
               });
           })
@@ -81,7 +76,6 @@ self.addEventListener('install', function(evt) {
           if (response) {
             return response;
           } else if (evt.request.headers.get('accept').includes('text/html')) {
-            // return the cached home page for all requests for html pages
             return caches.match('/');
           }
         });
